@@ -1,9 +1,9 @@
-//a POST routes /api/friends - this handles incoming survey results. will also used to handle the compatibility logic
-//Load Data
-var friendList = require('../data/friend.js');
+//Load Data ---> used for linking our routes to a series of data sources (data sources hold arrays of information)
+var friendList = require('../data/friends.js');
 
+//I need to create a POST route for my friends database
+//First, I need to create a GET route to display a JSON of all possible friends
 module.exports = function(app){
-  //a GET route that displays JSON of all possible friends
   app.get('/api/friends', function(req,res){
     res.json(friendList);
   });
@@ -15,7 +15,7 @@ module.exports = function(app){
     var friendCount = 0;
     var bestMatch = 0;
 
-    //runs through all current friends in list
+    //for loop to run through all current friends in list
     for(var i=0; i<friendList.length; i++){
       var scoresDiff = 0;
       //run through scores to compare friends
